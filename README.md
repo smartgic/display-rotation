@@ -31,15 +31,15 @@ $ python rotation.py
 
 ### Docker installation
 
-Supported architectures for Docker `smartgic/display-rotation` image:
+Supported architectures for Docker `smartgic/display-rotation` image.
 
-| Architecture |
-| ---          |
-| `amd64`      |
-| `arm/v6`     |
-| `arm/v7`     |
-| `arm64`      |
-| `ppc64`      |
+| Architecture | Information                                        |
+| ---          | ---                                                |
+| `amd64`      | Such as AMD and Intel processors                   |
+| `arm/v6`     | Such as Raspberry Pi 1                             |
+| `arm/v7`     | Such as Raspberry Pi 2/3/4                         |
+| `arm64`      | Such as Raspberry Pi 4 64-bit                      |
+| `ppc64`      | Such as PowerPC 64 platforms                       |
 
 ```bash
 $ docker run -d \
