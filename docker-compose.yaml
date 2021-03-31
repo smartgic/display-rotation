@@ -16,6 +16,7 @@ services:
       MONITOR: HDMI-1
       POINTER: Logitech M325
       INTERVAL: 1
+      ORIENTATION: right
     volumes:
       - /sys:/sys:ro
       - /tmp/.X11-unix:/tmp/.X11-unix
