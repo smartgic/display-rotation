@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
     # Check for the axis value at regular interval.
     while True:
-        rotate(threshold=threshold,
+        rotate(threshold=int(threshold),
                axis=axis,
                monitor=monitor,
                pointer=pointer)
