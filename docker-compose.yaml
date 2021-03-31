@@ -1,0 +1,18 @@
+---
+version: "3.6"
+
+services:
+  smartgic_rotation:
+    container_name: smartgic_rotation
+    hostname: rotation
+    restart: unless-stopped
+    image: smartgic/rotation:latest
+    environment:
+      DISPLAY: :0
+      THRESHOLD: 10
+      AXIS: x
+      MONITOR: HDMI-1
+      POINTER: Logitech M325
+      INTERVAL: 1
+    volumes:
+      - /sys:/sys:ro
