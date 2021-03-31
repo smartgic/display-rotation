@@ -9,6 +9,7 @@ COPY requirements.txt .
 
 RUN apt-get update && \
     apt-get install gcc x11-xserver-utils xinput -y && \
+    apt-get clean && \
     pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
