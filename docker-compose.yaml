@@ -3,10 +3,10 @@ version: "3.6"
 
 services:
   smartgic_rotation:
-    container_name: smartgic_rotation
-    hostname: rotation
+    container_name: smartgic_display_rotation
+    hostname: display-rotation
     restart: unless-stopped
-    image: smartgic/rotation:latest
+    image: smartgic/display-rotation:latest
     environment:
       DISPLAY: :0
       THRESHOLD: 10
