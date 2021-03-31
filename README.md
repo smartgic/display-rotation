@@ -3,7 +3,7 @@
 
 # Display rotation
 
-This application will rotate screen and pointer (mouse, touchscreen, etc...) based on an accelerometer axis value.
+This application will rotate screen and pointer *(mouse, touchscreen, etc...)* based on an accelerometer axis value.
 
 ## Requirements
 
