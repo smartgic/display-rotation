@@ -63,4 +63,4 @@ if __name__ == "__main__":
                axis=axis,
                monitor=monitor,
                pointer=pointer)
-        sleep(interval)
+        sleep(int(interval))
