@@ -4,6 +4,8 @@ from constants import DEFAULT_HDMI, DEFAULT_AXIS, DEFAULT_THRESHOLD, \
 from os import environ
 from time import sleep
 
+previous_rotation = None
+
 
 def rotate(threshold: int, axis: str, monitor: str, pointer: str):
     """This function checks the value of one of the axis available on
@@ -14,7 +16,7 @@ def rotate(threshold: int, axis: str, monitor: str, pointer: str):
 
     If no values are defined, default ones from constants.py will be used.
     """
-    previous_rotation = None
+    global previous_rotation
     cmd_monitor = ['xrandr', '--output', monitor, '--rotate']
     data = {}
 
