@@ -1,1 +1,2 @@
 adafruit-circuitpython-adxl34x
+RPi.GPIO
