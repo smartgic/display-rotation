@@ -1,5 +1,8 @@
 FROM python:3.9-slim
 
+LABEL vendor=Smartgic.io \
+    io.smartgic.maintainer="Gaëtan Trellu <gaetan.trellu@smartgic.io>"
+
 WORKDIR /app
 
 COPY requirements.txt .
