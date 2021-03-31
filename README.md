@@ -9,7 +9,7 @@ This application will rotate screen and pointer *(mouse, touchscreen, etc...)* b
 
 A X server is required. X applications such as `xrandr` *(rotate display)* and `xinput` *(rotate pointer)* are required too.
 
-The code has been developped using the [!ADXL345](https://learn.adafruit.com/adxl345-digital-accelerometer) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library.
+The code has been developped using the [ADXL345](https://learn.adafruit.com/adxl345-digital-accelerometer) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library.
 
 <img src='https://cdn-learn.adafruit.com/guides/cropped_images/000/000/247/medium640/2013_03_24_IMG_1453-1024.jpg?1520540491' width='250'/>
 
