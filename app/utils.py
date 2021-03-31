@@ -6,6 +6,14 @@ from constants import XINPUT_BINARY, XRANDR_BINARY
 from distutils.spawn import find_executable
 import board
 import subprocess as proc
+import json_logging
+import logging
+import sys
+
+json_logging.init_non_web(enable_json=True)
+logger = logging.getLogger('display-rotation')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
 def get_hardware():
@@ -22,11 +30,11 @@ def get_hardware():
             try:
                 return ADXL345(i2c)
             except Exception as err:
-                print('accelerometer not found. {}'.format(err))
+                logger.warning('accelerometer not found. {}'.format(err))
         else:
-            print('no i2c devices found')
+            logger.warning('no i2c devices found')
     except Exception as err:
-        print('i2c bus not found, check your hardware {}'.format(err))
+        logger.error('i2c bus not found, check your hardware {}'.format(err))
 
 
 def detect_binaries():
@@ -35,9 +43,9 @@ def detect_binaries():
     try:
         for binary in XINPUT_BINARY, XRANDR_BINARY:
             if find_executable(binary) is None:
-                print('{} binary not found'.format(binary))
+                logger.error('{} binary not found'.format(binary))
     except Exception as err:
-        print(err)
+        logger.error(err)
 
 
 def run(command: list, shell: bool = False):
@@ -60,6 +68,7 @@ def run(command: list, shell: bool = False):
                                  capture_output=True,
                                  text=True)
         execution.check_returncode()
-        print(execution.stdout)
+        logger.debug(command)
+        logger.info(execution.stdout)
     except proc.CalledProcessError as err:
-        print(err)
+        logger.error(err)

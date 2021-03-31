@@ -1,4 +1,4 @@
-from utils import detect_binaries, get_hardware, run
+from utils import detect_binaries, get_hardware, run, logger
 from constants import DEFAULT_HDMI, DEFAULT_AXIS, DEFAULT_THRESHOLD, \
     DEFAUT_POINTER, PROP_NAME, INTERVAL
 from os import environ
@@ -35,6 +35,7 @@ def rotate(threshold: int, axis: str, monitor: str, pointer: str):
             run(command=cmd_monitor)
             run(command=cmd_pointer, shell=True)
             previous_rotation = orientation
+            logger.info('rotated to right')
     else:
         orientation = 'normal'
         cmd_pointer = 'xinput set-prop "{}" "{}" 1 0 0 0 1 0 0 0 1'.format(
@@ -44,6 +45,7 @@ def rotate(threshold: int, axis: str, monitor: str, pointer: str):
             run(command=cmd_monitor)
             run(command=cmd_pointer, shell=True)
             previous_rotation = orientation
+            logger.info('rotated to normal')
 
 
 if __name__ == "__main__":

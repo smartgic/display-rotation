@@ -1,2 +1,3 @@
 adafruit-circuitpython-adxl34x
+json-logging
 RPi.GPIO
