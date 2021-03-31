@@ -18,3 +18,4 @@ services:
       INTERVAL: 1
     volumes:
       - /sys:/sys:ro
+      - /tmp/.X11-unix:/tmp/.X11-unix
