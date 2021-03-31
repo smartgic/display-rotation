@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-    apt-get update && \
-    apt-get install x11-xserver-utils xinput -y
+RUN apt-get update && \
+    apt-get install gcc x11-xserver-utils xinput -y && \
+    pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
 
