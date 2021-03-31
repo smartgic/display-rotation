@@ -10,7 +10,7 @@ A X server is required. X applications such as `xrandr` *(rotate display)* and `
 
 The code has been developped using the [!ADXL345](https://learn.adafruit.com/adxl345-digital-accelerometer) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library.
 
-<img src='https://cdn-learn.adafruit.com/guides/cropped_images/000/000/247/medium640/2013_03_24_IMG_1453-1024.jpg?1520540491' width='350'/>
+<img src='https://cdn-learn.adafruit.com/guides/cropped_images/000/000/247/medium640/2013_03_24_IMG_1453-1024.jpg?1520540491' width='250'/>
 
 Because this accelerometer is connected to an I2C bus, an I2C bus is required. The code has been developped for Raspberry Pi but should work for any other platforms supporting I2C bus and able to run Python code.
 
