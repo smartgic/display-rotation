@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.com/smartgic/display-rotation.svg?branch=main)](https://travis-ci.com/github/smartgic/display-rotation) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-pink.svg?style=flat)](https://github.com/smartgic/display-rotation/pulls) [![Discord](https://img.shields.io/discord/809074036733902888)](https://discord.gg/Vu7Wmd9j)
+[![Build Status](https://travis-ci.com/smartgic/display-rotation.svg?branch=main)](https://travis-ci.com/github/smartgic/display-rotation) [![Python version](https://img.shields.io/badge/Python-3.9-green.svg?style=flat&logoColor=FFFFFF&color=87567)](https://hub.docker.com/_/python)
+[![Docker pulls](https://img.shields.io/docker/pulls/smartgic/displau-rotation.svg?style=flat&logo=docker&logoColor=FFFFFF&color=87567)](https://hub.docker.com/r/smartgic/display-rotation) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-pink.svg?style=flat)](https://github.com/smartgic/display-rotation/pulls) [![Discord](https://img.shields.io/discord/809074036733902888)](https://discord.gg/Vu7Wmd9j)
 
 # Display rotation
 
@@ -29,6 +30,17 @@ $ python rotation.py
 ```
 
 ### Docker installation
+
+Supported architectures for Docker `smartgic/display-rotation` image:
+
+| Architecture |
+| ---          |
+| `amd64`      |
+| `arm/v6`     |
+| `arm/v7`     |
+| `arm64`      |
+| `ppc64`      |
+
 ```bash
 $ docker run -d \
     --volume /sys:/sys:ro \
@@ -43,6 +55,9 @@ $ docker run -d \
     --name display_rotation \
     smartgic/display-rotation:latest
 ```
+
+`/dev/i2c-1` could change depending the hardware used.
+
 
 ### Docker Compose installation
 ```bash
