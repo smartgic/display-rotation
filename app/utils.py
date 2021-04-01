@@ -10,6 +10,7 @@ import json_logging
 import logging
 import sys
 
+# Logger setup, configured to return JSON.
 json_logging.init_non_web(enable_json=True)
 logger = logging.getLogger('display-rotation')
 logger.setLevel(logging.DEBUG)

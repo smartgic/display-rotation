@@ -4,6 +4,7 @@ from constants import DEFAULT_HDMI, DEFAULT_AXIS, DEFAULT_THRESHOLD, \
 from os import environ
 from time import sleep
 
+# This is used to avoid the execution of xrandr and xinput every INTERNAL.
 previous_rotation = None
 
 
