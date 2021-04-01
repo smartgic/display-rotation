@@ -8,7 +8,7 @@ previous_rotation = None
 
 
 def rotate(threshold: int, axis: str, monitor: str, pointer: str,
-           orientation: str):
+           way: str):
     """This function checks the value of one of the axis available on
     the accelerometer.
 
@@ -30,7 +30,7 @@ def rotate(threshold: int, axis: str, monitor: str, pointer: str,
     data['z'] = dev.acceleration[2]
 
     if data[axis] >= threshold:
-        orientation = DEFAULT_ORIENTATION
+        orientation = way
         cmd_pointer = 'xinput set-prop "{}" "{}" 0 1 0 -1 0 1 0 0 1'.format(
             pointer, PROP_NAME)
         if previous_rotation != orientation:
@@ -69,5 +69,5 @@ if __name__ == "__main__":
                axis=axis,
                monitor=monitor,
                pointer=pointer,
-               orientation=orientation)
+               way=orientation)
         sleep(int(interval))
