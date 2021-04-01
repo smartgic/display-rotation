@@ -38,7 +38,7 @@ def rotate(threshold: int, axis: str, monitor: str, pointer: str,
             run(command=cmd_monitor)
             run(command=cmd_pointer, shell=True)
             previous_rotation = orientation
-            logger.info('rotated to right')
+            logger.info('rotated to {}'.format(orientation))
     else:
         orientation = 'normal'
         cmd_pointer = 'xinput set-prop "{}" "{}" 1 0 0 0 1 0 0 0 1'.format(
