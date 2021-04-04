@@ -15,18 +15,7 @@ The code has been developped using the [ADXL345](https://learn.adafruit.com/adxl
 
 Because this accelerometer is connected to an I2C bus, an I2C bus is required. The code has been developped for Raspberry Pi but should work for any other platforms supporting I2C bus and able to run Python code.
 
-## Installation
-
-Some environment variables should be defined to match your setup.
-
-| Variables     | Description                                            | Default |
-| ---           | ---                                                    | --- |
-| `INTERVAL`    | Check the accelerometer every `iNTERVAL` *(in second)* | `1` |
-| `THRESHOLD`   | Define when the axis reach a point of action           | `10` |
-| `AXIS`        | Which axis to check *(`x`, `y`, `z`)*                  | `x` |
-| `MONITOR`     | Interface name where the monitor is connected          | `HDMI-1` |
-| `POINTER`     | Name of the mouse, touchscreen, etc... to rotate       | `Touch p303 Touch Device,99-20P` |
-| `ORIENTATION` | Direction where the monitor will be rorated            | `right` |
+## Retrieve available monitors and pointers
 
 `xrandr` will provide a list of available monitors connected to your device.
 
@@ -48,6 +37,19 @@ $ xinput list
     ↳ Virtual core XTEST keyboard             	id=5	[slave  keyboard (3)]
     ↳ Touch p303 Touch Device,99-20P Keyboard 	id=6	[slave  keyboard (3)]
 ```
+
+## Installation
+
+Some environment variables should be defined to match your setup.
+
+| Variables     | Description                                            | Default |
+| ---           | ---                                                    | --- |
+| `INTERVAL`    | Check the accelerometer every `iNTERVAL` *(in second)* | `1` |
+| `THRESHOLD`   | Define when the axis reach a point of action           | `10` |
+| `AXIS`        | Which axis to check *(`x`, `y`, `z`)*                  | `x` |
+| `MONITOR`     | Interface name where the monitor is connected          | `HDMI-1` |
+| `POINTER`     | Name of the mouse, touchscreen, etc... to rotate       | `Touch p303 Touch Device,99-20P` |
+| `ORIENTATION` | Direction where the monitor will be rorated            | `right` |
 
 ### Virtualenv installation
 
