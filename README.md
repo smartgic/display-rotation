@@ -28,15 +28,17 @@ Some environment variables should be defined to match your setup.
 | `POINTER`     | Name of the mouse, touchscreen, etc... to rotate       | `Touch p303 Touch Device,99-20P` |
 | `ORIENTATION` | Direction where the monitor will be rorated            | `right` |
 
-List available monitors.
-```
+`xrandr` will provide a list of available monitors connected to your device.
+
+```bash
 $ xrandr --listmonitors
 Monitors: 1
  0: +*HDMI-1 1080/1210x1920/680+0+0  HDMI-1
  ```
 
-List available pointers.
-```
+`xinput` will provide a list of available pointers *(mouses)* connected to your device.
+
+```bash
 $ xinput list
 ⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
@@ -88,7 +90,7 @@ $ docker run -d \
     smartgic/display-rotation:latest
 ```
 
-`/dev/i2c-1` could change depending the hardware used.
+`/dev/i2c-1` could change depending the hardware used *(`i2c` from Raspberry Pi 4B)*.
 
 
 ### Docker Compose installation
