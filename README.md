@@ -17,6 +17,36 @@ Because this accelerometer is connected to an I2C bus, an I2C bus is required. T
 
 ## Installation
 
+Some environment variables should be defined to match your setup.
+
+| Variables     | Description                                            | Default |
+| ---           | ---                                                    | --- |
+| `INTERVAL`    | Check the accelerometer every `iNTERVAL` *(in second)* | `1` |
+| `THRESHOLD`   | Define when the axis reach a point of action           | `10` |
+| `AXIS`        | Which axis to check *(`x`, `y`, `z`)*                  | `x` |
+| `MONITOR`     | Interface name where the monitor is connected          | `HDMI-1` |
+| `POINTER`     | Name of the mouse, touchscreen, etc... to rotate       | `Touch p303 Touch Device,99-20P` |
+| `ORIENTATION` | Direction where the monitor will be rorated            | `right` |
+
+List available monitors.
+```
+$ xrandr --listmonitors
+Monitors: 1
+ 0: +*HDMI-1 1080/1210x1920/680+0+0  HDMI-1
+ ```
+
+List available pointers.
+```
+$ xinput list
+⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
+⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
+⎜   ↳ Touch p303 Touch Device,99-20P Mouse    	id=7	[slave  pointer  (2)]
+⎜   ↳ Touch p303 Touch Device,99-20P          	id=8	[slave  pointer  (2)]
+⎣ Virtual core keyboard                   	id=3	[master keyboard (2)]
+    ↳ Virtual core XTEST keyboard             	id=5	[slave  keyboard (3)]
+    ↳ Touch p303 Touch Device,99-20P Keyboard 	id=6	[slave  keyboard (3)]
+```
+
 ### Virtualenv installation
 
 ```bash
@@ -26,6 +56,7 @@ $ python3 -m venvs ~/venvs/display-rotation
 $ source ~/venvs/display-rotation/bin/activate
 $ pip install -r requirements.txt
 $ cd app
+$ export POINTER="Logitech M325"
 $ python rotation.py
 ```
 
