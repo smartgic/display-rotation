@@ -1,15 +1,15 @@
 [![Build Status](https://travis-ci.com/smartgic/display-rotation.svg?branch=main)](https://travis-ci.com/github/smartgic/display-rotation) [![Python version](https://img.shields.io/badge/Python-3.9-green.svg?style=flat&logoColor=FFFFFF&color=87567)](https://hub.docker.com/_/python)
-[![Docker pulls](https://img.shields.io/docker/pulls/smartgic/display-rotation.svg?style=flat&logo=docker&logoColor=FFFFFF&color=87567)](https://hub.docker.com/r/smartgic/display-rotation) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-pink.svg?style=flat)](https://github.com/smartgic/display-rotation/pulls) [![Discord](https://img.shields.io/discord/809074036733902888)](https://discord.gg/Vu7Wmd9j)
+[![Docker pulls](https://img.shields.io/docker/pulls/smartgic/display-rotation.svg?style=flat&logo=docker&logoColor=FFFFFF&color=87567)](https://hub.docker.com/r/smartgic/display-rotation) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-pink.svg?style=flat)](https://github.com/smartgic/display-rotation/pulls) [![Discord](https://img.shields.io/discord/809074036733902888)](https://discord.com/invite/sHM3Duz5d3)
 
 # Display rotation
 
-This application will rotate screen and pointer *(mouse, touchscreen, etc...)* based on an accelerometer axis value.
+This application will rotate screen and pointer *(mouse, touchscreen, etc...)* based on an accelerometer axis values.
 
 ## Requirements
 
 A X server is required. X applications such as `xrandr` *(rotate display)* and `xinput` *(rotate pointer)* are required too.
 
-The code has been developped using the [ADXL345](https://learn.adafruit.com/adxl345-digital-accelerometer) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library.
+The code has been developped using the [ADXL345](https://amzn.to/3HGeOO9) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library. Have a look to the [Smart'Gic Abstract RPi API](https://github.com/smartgic/abstract-rpi).
 
 <img src='https://cdn-learn.adafruit.com/guides/cropped_images/000/000/247/medium640/2013_03_24_IMG_1453-1024.jpg?1520540491' width='250'/>
 
@@ -17,18 +17,18 @@ Because this accelerometer is connected to an I2C bus, an I2C bus is required. T
 
 ## Retrieve available monitors and pointers
 
-`xrandr` will provide a list of available monitors connected to your device.
+`xrandr` will provide a list of available monitors/TV connected to your device.
 
 ```bash
-$ xrandr --listmonitors
+xrandr --listmonitors
 Monitors: 1
  0: +*HDMI-1 1080/1210x1920/680+0+0  HDMI-1
- ```
+```
 
-`xinput` will provide a list of available pointers *(mouses)* connected to your device.
+`xinput` will provide a list of available pointers *(mouse, touchscreen, etc...)* connected to your device.
 
 ```bash
-$ xinput list
+xinput list
 ⎡ Virtual core pointer                    	id=2	[master pointer  (3)]
 ⎜   ↳ Virtual core XTEST pointer              	id=4	[slave  pointer  (2)]
 ⎜   ↳ Touch p303 Touch Device,99-20P Mouse    	id=7	[slave  pointer  (2)]
@@ -54,14 +54,14 @@ Some environment variables should be defined to match your setup.
 ### Virtualenv installation
 
 ```bash
-$ git clone https://github.com/smartgic/display-rotation.git
-$ cd display-rotation
-$ python3 -m venvs ~/venvs/display-rotation
-$ source ~/venvs/display-rotation/bin/activate
-$ pip install -r requirements.txt
-$ cd app
-$ export POINTER="Logitech M325"
-$ python rotation.py
+git clone https://github.com/smartgic/display-rotation.git
+cd display-rotation
+python3 -m venvs ~/venvs/display-rotation
+source ~/venvs/display-rotation/bin/activate
+pip install -r requirements.txt
+cd app
+export POINTER="Logitech M325"
+python rotation.py
 ```
 
 ### Docker installation
@@ -77,7 +77,7 @@ Supported architectures for Docker `smartgic/display-rotation` image.
 | `ppc64`      | Such as PowerPC 64 platforms                       |
 
 ```bash
-$ docker run -d \
+docker run -d \
     --volume /sys:/sys:ro \
     --volume /tmp/.X11-unix:/tmp/.X11-unix \
     --device /dev/i2c-1 \
@@ -96,8 +96,11 @@ $ docker run -d \
 
 
 ### Docker Compose installation
+
+Make sure `docker-compose` is installed.
+
 ```bash
-$ git clone https://github.com/smartgic/display-rotation.git
-$ cd display-rotation
-$ docker-compose up -d
+git clone https://github.com/smartgic/display-rotation.git
+cd display-rotation
+docker-compose up -d
 ```
