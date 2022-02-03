@@ -94,7 +94,6 @@ docker run -d \
 
 `/dev/i2c-1` could change depending the hardware used *(`i2c` from Raspberry Pi 4B)*.
 
-
 ### Docker Compose installation
 
 Make sure `docker-compose` is installed.
@@ -104,3 +103,7 @@ git clone https://github.com/smartgic/display-rotation.git
 cd display-rotation
 docker-compose up -d
 ```
+
+## Credits
+
+Developed by [Smart"Gic](https://smartgic.io).
