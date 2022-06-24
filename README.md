@@ -85,7 +85,7 @@ docker run -d \
     --env THRESHOLD=10 \
     --env AXIS=x \
     --env MONITOR=HDMI-1 \
-    --env POINTER=Logitech M325 \
+    --env POINTER="Logitech M325" \
     --env INTERVAL=1 \
     --env ORIENTATION=right \
     --name display_rotation \
