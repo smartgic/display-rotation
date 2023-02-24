@@ -11,7 +11,7 @@ A X server is required. X applications such as `xrandr` *(rotate display)* and `
 
 The code has been developped using the [ADXL345](https://amzn.to/3HGeOO9) accelerometer, I'll recommend any accelerometer compatible with the `adafruit-circuitpython-adxl34x` Python library. Have a look to the [Smart'Gic Abstract RPi API](https://github.com/smartgic/abstract-rpi).
 
-<img src='https://cdn-learn.adafruit.com/guides/cropped_images/000/000/247/medium640/2013_03_24_IMG_1453-1024.jpg?1520540491' width='250'/>
+<img src='https://cdn-learn.adafruit.com/assets/assets/000/006/359/medium800/adafruit_products_2013_03_24_IMG_1453-1024.jpg?1396835278' width='250'/>
 
 Because this accelerometer is connected to an I2C bus, an I2C bus is required. The code has been developped for Raspberry Pi but should work for any other platforms supporting I2C bus and able to run Python code.
 
@@ -76,12 +76,22 @@ Supported architectures for Docker `smartgic/display-rotation` image.
 | `arm64`      | Such as Raspberry Pi 4 64-bit                      |
 | `ppc64`      | Such as PowerPC 64 platforms                       |
 
+
+The container needs to be authenticated to access the X Server and run the GUI. One way to do it is to use `xauth` *(part of the `xauth` package on Debian/Ubuntu)* which will generate a X authentication token. This token will have to be mounted as a volume within the container to be then used via the `XAUTHORITY` environment variable.
+
+```bash
+$ touch ~/.docker.xauth
+$ xauth nlist :0 | sed -e 's/^..../ffff/' | xauth -f ~/.docker.xauth nmerge -
+```
+
 ```bash
 docker run -d \
     --volume /sys:/sys:ro \
     --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    --volume ~/.docker.xauth:/tmp/.docker.xauth:ro \
     --device /dev/i2c-1 \
     --env DISPLAY=:0 \
+    --env XAUTHORITY=/tmp/.docker.xauth \
     --env THRESHOLD=10 \
     --env AXIS=x \
     --env MONITOR=HDMI-1 \
@@ -96,7 +106,7 @@ docker run -d \
 
 ### Docker Compose installation
 
-Make sure `docker-compose` is installed.
+Make sure `docker-compose` is installed if not use your package manager or `pip`.
 
 ```bash
 git clone https://github.com/smartgic/display-rotation.git
