@@ -1,25 +1,24 @@
 """This file contains functions that could be used multiple times
 """
+import subprocess as proc
+import logging
+import sys
+from distutils.spawn import find_executable
+import json_logging
 from busio import I2C
 from adafruit_adxl34x import ADXL345
 from constants import XINPUT_BINARY, XRANDR_BINARY
-from distutils.spawn import find_executable
 import board
-import subprocess as proc
-import json_logging
-import logging
-import sys
 
 # Logger setup, configured to return JSON.
 json_logging.init_non_web(enable_json=True)
-logger = logging.getLogger('display-rotation')
+logger = logging.getLogger("display-rotation")
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 
 
 def get_hardware():
-    """Retrieve accelerometer fom I2C bus.
-    """
+    """Retrieve accelerometer fom I2C bus."""
     try:
         # board is part of adafruit-blinka and helps to manage
         # defferent type of boards.
@@ -30,22 +29,23 @@ def get_hardware():
         if len(i2c.scan()) > 0:
             try:
                 return ADXL345(i2c)
-            except Exception as err:
-                logger.warning('accelerometer not found. {}'.format(err))
+            except RuntimeError as err:
+                logger.warning("accelerometer not found, error: %s", err)
+                return None
         else:
-            logger.warning('no i2c devices found')
-    except Exception as err:
-        logger.error('i2c bus not found, check your hardware {}'.format(err))
+            logger.warning("no i2c devices found")
+    except RuntimeError as err:
+        logger.error("i2c bus not found, check your hardware, error: %s", err)
+        return None
 
 
 def detect_binaries():
-    """Make sure xrandr and xinput binaries are available.
-    """
+    """Make sure xrandr and xinput binaries are available."""
     try:
         for binary in XINPUT_BINARY, XRANDR_BINARY:
             if find_executable(binary) is None:
-                logger.error('{} binary not found'.format(binary))
-    except Exception as err:
+                logger.error("binary not found, error: %s", binary)
+    except RuntimeError as err:
         logger.error(err)
 
 
@@ -60,14 +60,11 @@ def run(command: list, shell: bool = False):
     try:
         execution = None
         if shell:
-            execution = proc.run(command,
-                                 capture_output=True,
-                                 text=True,
-                                 shell=True)
+            execution = proc.run(
+                command, capture_output=True, text=True, shell=True, check=False
+            )
         else:
-            execution = proc.run(command,
-                                 capture_output=True,
-                                 text=True)
+            execution = proc.run(command, capture_output=True, text=True, check=False)
         execution.check_returncode()
         logger.debug(command)
         logger.info(execution.stdout)
