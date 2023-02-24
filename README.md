@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.com/smartgic/display-rotation.svg?branch=main)](https://travis-ci.com/github/smartgic/display-rotation) [![Python version](https://img.shields.io/badge/Python-3.9-green.svg?style=flat&logoColor=FFFFFF&color=87567)](https://hub.docker.com/_/python)
 [![Docker pulls](https://img.shields.io/docker/pulls/smartgic/display-rotation.svg?style=flat&logo=docker&logoColor=FFFFFF&color=87567)](https://hub.docker.com/r/smartgic/display-rotation) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-pink.svg?style=flat)](https://github.com/smartgic/display-rotation/pulls) [![Discord](https://img.shields.io/discord/809074036733902888)](https://discord.com/invite/sHM3Duz5d3)
 
 # Display rotation
