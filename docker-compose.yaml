@@ -1,9 +1,9 @@
 ---
-version: "3.6"
+version: "3.9"
 
 services:
   smartgic_rotation:
-    container_name: smartgic_display_rotation
+    container_name: display-rotation
     hostname: display-rotation
     restart: unless-stopped
     image: smartgic/display-rotation:latest
@@ -11,6 +11,7 @@ services:
       - /dev/i2c-1
     environment:
       DISPLAY: :0
+      XAUTHORITY: /tmp/.docker.xauth
       THRESHOLD: 10
       AXIS: x
       MONITOR: HDMI-1
@@ -20,3 +21,4 @@ services:
     volumes:
       - /sys:/sys:ro
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.docker.xauth:/tmp/.docker.xauth:ro
